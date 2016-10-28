@@ -1,2 +1,2 @@
-# Assembler
-Implementation of two pass assembler
+# Assemble
+Implementation of a hypothetical two pass assembler as a semester assignment
