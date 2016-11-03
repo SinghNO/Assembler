@@ -24,7 +24,7 @@ typedef struct littab {
 	int address;
 }lit_tab;
 
-int search_mot(mot_tab *tab, mot_tab *res, char *str, int size);			//Search from mot
+mot_tab* search_mot(mot_tab *tab, char *str, int size);			//Search from mot
 int read_mot(char *file, mot_tab *tab);							//Fill mot
 
 int search_pot(pot_tab *tab, pot_tab *res, char *str, int size);			//Search from pot
@@ -39,3 +39,6 @@ sym_tab* init_sym(sym_tab *tab);							//Initialize symbol table
 
 int tokenize(char *line, char arr[16][64]);
 int search_label(char *arr);								//To search whether it is a label
+int search_sym(sym_tab *tab, char *str, int size);					//To search whether the label already exists in symbol table
+											//or not
+//int add_sym(sym_tab *sym, char *str, char *type, int lc, int sym_size);				

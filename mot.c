@@ -3,9 +3,8 @@
 #include <string.h>
 #include "main.h"
 
-int search_mot(mot_tab *tab, mot_tab *res, char *str, int size) {
-	res = NULL;
-	printf("%s\n", str);
+mot_tab* search_mot(mot_tab *tab, char *str, int size) {
+	mot_tab *res = NULL;
 	while(size--) {
 		if(!strcasecmp(str, tab[size].mnemonic)) {
 			res = (mot_tab *)malloc(sizeof(mot_tab));
@@ -13,22 +12,19 @@ int search_mot(mot_tab *tab, mot_tab *res, char *str, int size) {
 			res->opcode = tab[size].opcode;
 			res->len = tab[size].len;
 			res->ops = tab[size].ops;		
-			return 1;
+			return res;
 		}
 	}
-
-	return 0;
+	return NULL;
 }
 
 int read_mot(char *file, mot_tab *mot) {
 	FILE *fd;
 	char mnemonic[50];
 	int opcode, len, ops, count, size;
-
 	fd = fopen(file, "r");
 	count = 0;
 	size = 64;
-	printf("1\n");
 	while((fscanf(fd, "%s%d%d%d", mnemonic, &opcode, &ops, &len)) != -1) {
 		strcpy(mot[count].mnemonic, mnemonic);
 		mot[count].opcode = opcode;
@@ -69,6 +65,7 @@ int read_pot(char *file, pot_tab *pot) {
 	return count;
 }
 
+
 mot_tab* init_mot(mot_tab *tab) {
 	int size = 64;
 	tab = (mot_tab *)malloc(sizeof(mot_tab) * size);
@@ -80,3 +77,32 @@ pot_tab* init_pot(pot_tab *tab) {
 	tab = (pot_tab *)malloc(sizeof(pot_tab) * size);
 	return tab;
 }
+
+sym_tab* init_sym(sym_tab *tab) {
+        int size = 64;
+        tab = (sym_tab *)malloc(sizeof(sym_tab) * size);
+        return tab;
+}
+
+int search_label(char *arr) {
+        int i = 0;
+        while(arr[i] != '\0') {
+                if(arr[i] == ':') {
+                        arr[i] = '\0';
+                        return 2;                                       //label found
+                }
+                i++;
+        }
+        return 0;                                                       //no label found
+}
+
+
+int search_sym(sym_tab *tab, char *str, int size) {
+        while(size--) {
+                if(!strcasecmp(str, tab[size].symbol)) {			//already in symbol table
+                        return 1;
+                }
+        }
+        return 0;
+}
+

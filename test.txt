@@ -1,0 +1,6 @@
+read n
+store a
+back: read b
+write a
+mult a
+add s n
