@@ -1,2 +1,0 @@
-read n
-store a ;okay
