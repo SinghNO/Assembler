@@ -1,6 +1,13 @@
-read n
-store a
-back: read b
-write a
-mult a
-add s n
+start
+read a
+write b
+load
+back: add n s
+sub s n
+jmp back
+endp
+a db 1
+b dw 9
+n db 54
+s dw 100
+end

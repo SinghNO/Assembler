@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "main.h"
+#include "pass1.h"
 
 void pass2(sym_tab* tab) {
 	FILE *obj;
@@ -31,18 +31,4 @@ void pass2(sym_tab* tab) {
 		}
 	}
 	return;
-}
-
-sym_tab* search_sym(sym_tab *tab, char *str, int size) {
-	sym_tab *res = NULL;
-	while(size--) {
-		if(!strcasecmp(str, tab[size].symbol)) {
-			res = (sym_tab *)malloc(sizeof(sym_tab));
-			strcpy(res->symbol, tab[size].symbol);
-			strcpy(res->type, tab[size].type);
-			res->address = tab[size].address;		
-			return res;
-		}
-	}
-	return NULL;
 }
