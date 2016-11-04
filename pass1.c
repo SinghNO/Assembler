@@ -3,7 +3,7 @@
 #include <string.h>
 #include "pass1.h"
 
-int error;
+int error, ssize;
 sym_tab *sym;
 
 void pass1(char *input) {
@@ -13,7 +13,7 @@ void pass1(char *input) {
 	mot_tab *mot;
 	pot_tab *pot;
 	
-	int msize, psize, ssize;
+	int msize, psize;
 	int scount, tcount, lcount;
 	int cseg, dseg;
 	int lc;

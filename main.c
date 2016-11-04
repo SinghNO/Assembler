@@ -1,6 +1,6 @@
 #include "main.h"
 
-extern int error;
+extern int error, ssize;
 extern sym_tab *sym;
 
 int main(int argc, char *argv[]) {
